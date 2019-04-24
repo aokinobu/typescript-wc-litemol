@@ -1,6 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
-import { LiteMol } from 'litemol';
+// import { LiteMol } from 'litemol';
+// import { LiteMolPluginInstance } from './bundle-bundle_ligand-interactions-module_defer.js';
 
 // import LiteMol from 'LiteMol';
 
@@ -78,12 +79,34 @@ if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'www
     super.ready();
     console.log("ready");
     // LiteMol.
-    let plugin = LiteMol.Plugin.create({ 
-    target: document.getElementById('litemol'),
-    viewportBackground: '#ffffff',
-    layoutState: { hideControls: true } // you can also include isExpanded: true
-});
+      var urlEnv = 'www';
+  //   var grailsAppEnv = new RegExp('wwwdev').test(window.location.href) ? 'wwwdev' : new RegExp('wwwint').test(window.location.href) ? 'wwwint' : 'www';
+	// if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'wwwdev';
+ 	//Instantiate LiteMol2Component
+     var initParams = {
+            moleculeId: '1hd4',
+            pdbeUrl: 'https://'+ urlEnv +'.ebi.ac.uk/pdbe/',
+            loadMaps: true,
+            validationAnnotation: true,
+            domainAnnotation: true,
+            lowPrecisionCoords: true,
+            isExpanded: false,
+            treeMenu: false,
+            hideControls: false,
+            showLogs: false,
+            subscribeEvents: false,
+            selectInteractions: true,
+            showPDBeLogo: true
+     }
 
+    //  if('1' != '') initParams['assemblyId'] = '1';
+     
+    //  LiteMolPluginInstance.render(document.getElementById('litemolViewer'), initParams);
+    //  if(window.innerWidth > 750){ 
+    //      LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'landscape');
+    //  }else{
+    // 	 LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'portrait');
+    //  }
   }
   handleClick(e) {
     console.log('click');

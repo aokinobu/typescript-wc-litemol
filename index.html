@@ -1,91 +1,14 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-
-    <title>PDB 1hd4 3D view &#8249; Protein Data Bank in Europe (PDBe) &#8249; EMBL-EBI</title>
-    <meta name="rating" content="general">
-    <meta name="description" content="PDB 1hd4 3D view"><!-- Describe what this page is about -->
-    <meta name="author" content="Protein Data Bank in Europe">
-    <meta name="keywords" content="1hd4 3D view"><!-- A few keywords that relate to the content of THIS PAGE (not the whol project) -->
-
-    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="IE=8"/>
-    
-    <link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/entry/static/bundle-bundle_litemol_head.min.css">
-    
-      		<div style="text-align:center;margin-top:250px"><img src="https://www.ebi.ac.uk/pdbe/entry/static/images/widgets/loader.gif" /></div>
-
-    <style type="text/css">
-      /* You have the option of setting a maximum width for your page, and making sure everything is centered */
-      /* body { max-width: 1600px; margin: 0 auto; } */
-      html {
-        overflow: hidden;
-      }
-      body {
-        margin: 0;
-        width: 100%;
-      }
-     
-    </style>
-    <!-- end CSS-->
-    	
-  </head>
-
-  <body>
-  	<div id="wrapper" class="container_pdbe">
-  	    <!-- Loader Image  -->
-  		<div style="text-align:center;margin-top:250px"><img src="https://www.ebi.ac.uk/pdbe/entry/static/images/widgets/loader.gif" /></div>
-  		
-  		<!-- LiteMol Container -->
-  		<div id="litemolViewer" ></div>
-    </div>
-	<script src="https://www.ebi.ac.uk/pdbe/entry/static/bundle-bundle_ligand-interactions-module_defer.js"></script>
-    <script src="https://www.ebi.ac.uk/pdbe/entry/static/bundle-bundle_ligand-interactions-module_defer.js"></script>    
-    <script>
-    var urlEnv = 'www';
-    var grailsAppEnv = new RegExp('wwwdev').test(window.location.href) ? 'wwwdev' : new RegExp('wwwint').test(window.location.href) ? 'wwwint' : 'www';
-	if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'wwwdev';
- 	//Instantiate LiteMol2Component
-     var initParams = {
-            moleculeId: '1hd4',
-            pdbeUrl: 'https://'+ urlEnv +'.ebi.ac.uk/pdbe/',
-            loadMaps: true,
-            validationAnnotation: true,
-            domainAnnotation: true,
-            lowPrecisionCoords: true,
-            isExpanded: false,
-            treeMenu: false,
-            hideControls: false,
-            showLogs: false,
-            subscribeEvents: false,
-            selectInteractions: true,
-            showPDBeLogo: true
-     }
-
-     if('1' != '') initParams['assemblyId'] = '1';
-     
-     LiteMolPluginInstance.render(document.getElementById('litemolViewer'), initParams);
-     if(window.innerWidth > 750){ 
-         LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'landscape');
-     }else{
-    	 LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'portrait');
-     }
-     
-    </script>
-    
-    <!-- Google Analytics Script  -->
-    <script type="text/javascript">
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-47784041-1', 'ebi.ac.uk');
-	ga('send', 'pageview');
-	</script>
-	
-    
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <script type="module" src="./my-element.js"></script>
+  <title>code sample</title>
+</head>
+<body>
+  <wc-litemol></wc-litemol>
+</body>
 </html>
