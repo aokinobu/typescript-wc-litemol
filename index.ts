@@ -1,7 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
 // import { LiteMol } from 'litemol';
-// import { LiteMolPluginInstance } from './bundle-bundle_ligand-interactions-module_defer.js';
+import { LiteMolPluginInstance } from './bundle-bundle_ligand-interactions-module_defer.js';
 
 // import LiteMol from 'LiteMol';
 
@@ -101,7 +101,7 @@ if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'www
 
     //  if('1' != '') initParams['assemblyId'] = '1';
      
-    //  LiteMolPluginInstance.render(document.getElementById('litemolViewer'), initParams);
+     LiteMolPluginInstance.render(this.shadowRoot.getElementById('litemolViewer'), initParams);
     //  if(window.innerWidth > 750){ 
     //      LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'landscape');
     //  }else{
