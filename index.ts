@@ -1,13 +1,26 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
-import 'litemol/index.js';
+import { LiteMol } from 'litemol';
+
+// import LiteMol from 'LiteMol';
+
+// import { LiteMol, Plugin } from 'litemol';
+
+// import "/pdbe/entry/static/bundle-bundle_ligand-interactions-module_defer.js";
+
+// import 'litemol/js/LiteMol-plugin.js';
+// import 'litemol/js/litemol.js';
+// import './litemol.js';
+// const styles = import('litemol/Hello.css');
+
+
 /**
 * @polymer
-* @extends HTMLElement
+* @extends PolymerElement
 * @demo public/index.html
 * @appliesMixin
 */
-class LiteMol extends PolymerElement {
+class LiteMolPolymer extends PolymerElement {
   selection: any;
   diseaseresultdata: any;
   urlEnv: String;    // = 'www';
@@ -17,41 +30,29 @@ var grailsAppEnv = new RegExp('wwwdev').test(window.location.href) ? 'wwwdev' : 
 if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'wwwdev';
 */
   static get template() {
-    return html`
-
-<style type="text/css">
+    return html`<style type="text/css">
+     /* You have the option of setting a maximum width for your page, and making sure everything is centered */
+      /* body { max-width: 1600px; margin: 0 auto; } */
+      html {
+        overflow: hidden;
+      }
+      body {
+        margin: 0;
+        width: 100%;
+      }
+      {{import ('litemol/dist/css/LiteMol-plugin.css')}}
 </style>
+<link rel="stylesheet" href="" />
 
-<!-- Instantiate LiteMol2Component -->
-     var initParams = {
-            moleculeId: '1hd4',
-            pdbeUrl: 'https://'+ urlEnv +'.ebi.ac.uk/pdbe/',
-            loadMaps: true,
-            validationAnnotation: true,
-            domainAnnotation: true,
-            lowPrecisionCoords: true,
-            isExpanded: false,
-            treeMenu: false,
-            hideControls: false,
-            showLogs: false,
-            subscribeEvents: false,
-            selectInteractions: true,
-            showPDBeLogo: true
-     }
-
-     initParams['assemblyId'] = '1';
-
-     LiteMolPluginInstance.render(document.getElementById('litemolViewer'), initParams);
-     if(window.innerWidth > 750){
-         LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'landscape');
-     }else{
-    	 LiteMolPluginInstance.setMenuView(document.getElementById('litemolViewer'), 'portrait');
-     }
-
+  	    <!-- Loader Image  -->
+  		<div style="text-align:center;margin-top:250px"><img src="https://www.ebi.ac.uk/pdbe/entry/static/images/widgets/loader.gif" /></div>
+  		
+  		<!-- LiteMol Container -->
+  		<div id="litemolViewer" ></div>
  selection: {{selection}}
 <iron-ajax auto="" url="https://test.sparqlist.glyconavi.org/api/GlycoSample_Disease_List_chart" handle-as="json" last-response="{{diseaseresultdata}}"></iron-ajax>
+<div id="litemol" />
 
-<google-chart id="selectionchart" type="pie" rows='[[diseaseresultdata]]' cols='[{"label": "Disease", "type": "string"},{"label": "Count", "type": "number"}]' on-google-chart-ready="handleClick" on-google-chart-select="selectionClicked" selection="{{selection}}"></google-chart>
 `;
   }
   static get properties() {
@@ -76,12 +77,20 @@ if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'www
   ready() {
     super.ready();
     console.log("ready");
+    // LiteMol.
+    let plugin = LiteMol.Plugin.create({ 
+    target: document.getElementById('litemol'),
+    viewportBackground: '#ffffff',
+    layoutState: { hideControls: true } // you can also include isExpanded: true
+});
+
   }
   handleClick(e) {
     console.log('click');
   }
   selectionClicked(e) {
     console.log("selectionClicked");
+
     console.log(e);
 
     // GoogleChart chart = this.shadowRoot.getElementById("selectionchart");
@@ -100,4 +109,4 @@ if(typeof grailsAppEnv != 'undefined' && grailsAppEnv == 'wwwdev') urlEnv = 'www
   }
 }
 
-customElements.define('wc-litemol', LiteMol);
+customElements.define('wc-litemol', LiteMolPolymer);

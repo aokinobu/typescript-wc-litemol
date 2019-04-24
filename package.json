@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@polymer/iron-ajax": "3.0.1",
     "@polymer/polymer": "3.2.0",
-    "litemol": "^2.4.1"
+    "intersection-observer": "0.5.1",
+    "litemol": "^2.4.1",
+    "three": "0.93.0",
+    "three-orbit-controls": "82.1.0"
   }
 }
