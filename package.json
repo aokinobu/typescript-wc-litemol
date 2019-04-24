@@ -8,6 +8,7 @@
     "intersection-observer": "0.5.1",
     "litemol": "^2.4.1",
     "three": "0.93.0",
-    "three-orbit-controls": "82.1.0"
+    "three-orbit-controls": "82.1.0",
+    "pdb-lite-mol": "0.1.0"
   }
 }
